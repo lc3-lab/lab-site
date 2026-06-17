@@ -13,16 +13,16 @@ image: "/images/projects/synthesis-ai.png"
 
 The SAIL project is a design and research initiative focused on developing and studying intelligent technologies that support meaningful and ethical partnerships between students and AI in collaborative knowledge creation. The project integrates two interconnected design components:
 
-- Synthesis AI Lab, or SAIL, a tool powered by learning analytics techniques and large language models to support knowledge synthesis practices.
-- Pedagogical strategies that guide classroom integration, with an emphasis on supporting human agency and productive knowledge creation in AI-mediated learning environments.
+- <strong>Synthesis AI Lab</strong>, or SAIL, a tool powered by learning analytics techniques and large language models to support knowledge synthesis practices.
+- <strong>Pedagogical strategies</strong> that guide classroom integration, with an emphasis on supporting human agency and productive knowledge creation in AI-mediated learning environments.
 
 We use co-design methods to develop and implement the tool in both lab-based and real-world classroom settings. We investigate the role of AI in human thinking and knowledge creation. We particularly focus on how AI shapes interaction and supports key epistemic practices in collaborative learning, and how learning environments should be designed for meaningful human-AI partnerhip. These questions also lead us to ask what new forms of literacy, participation, and agency are needed for the future of work and learning.
 
 <strong> Status: </strong> 
 
-- Jun 26: SAIL v2 is currently under development, with new features and enhanced LLM capabilities to better support collaborative knowledge synthesis. 🌳
+- Jun 26: <strong>SAIL v2</strong> is currently under development, with new features and enhanced LLM capabilities to better support collaborative knowledge synthesis. 🌳
 - Jan 26: SAIL v1 is currently being implemented in a graduate classroom. Stay tuned for empirical findings and design insights! 👩‍🏫
-- Jan 26: 📢 We are excited to announce the alpha release of Synthesis AI Lab (SAIL)!
+- Jan 26: 📢 We are excited to announce the <strong>alpha release of Synthesis AI Lab (SAIL)</strong>!
 Explore the project site: https://synthesisai-lab.github.io/
 
 ## What is knolwedge synthesis
@@ -39,9 +39,9 @@ These questions are especially important in many AI-mediated learning environmen
 SAIL is designed around social annotation as a starting point for knowledge synthesis. In social annotation, students read course materials together, share comments on key passages, and make their emerging thinking visible to peers. SAIL helps students transform these distributed annotations into resources for collective sensemaking, classroom discussion, collaborative work, and knowledge creation.
 
 Building on our earlier Synthesis Lab work (Zhu et al., 2023), SAIL highlights three key design components: 
-- a Knowledge Synthesis Graph (Shui & Zhu, 2026): Helps students externalize, organize, and build on insights from social annotations. The graph is AI-generated and human-editable.(left panel). 
-- an AI partner: Scaffolds the knowledge synthesis process by suggesting thematic links, surfacing conceptual gaps, and prompting reflection to engage in productive knowledge building activities (middle panel).  
-- a Synthesis Editor: Integrates with the graph and AI partner to generate text-based syntheses from the graph, which students can further edit and refine (right panel).
+- a <strong>Knowledge Synthesis Graph</strong> (Shui & Zhu, 2026): Helps students externalize, organize, and build on insights from social annotations. The graph is AI-generated and human-editable.(left panel). 
+- an <strong>AI partner</strong>: Scaffolds the knowledge synthesis process by suggesting thematic links, surfacing conceptual gaps, and prompting reflection to engage in productive knowledge building activities (middle panel).  
+- a <strong>Synthesis Editor</strong>: Integrates with the graph and AI partner to generate text-based syntheses from the graph, which students can further edit and refine (right panel).
 
 
 These components help students organize ideas, notice patterns and gaps, reflect on connections, and develop coherent synthesis artifacts.
