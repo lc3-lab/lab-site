@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import members from '../data/members.json';
+import { base } from '../utils/url';
 
 const allProjects = await Astro.glob('../content/projects/*.md');
 const projects = allProjects.sort((a, b) => a.frontmatter.order - b.frontmatter.order);
@@ -18,13 +19,13 @@ function getMember(name) {
         <li class="project-card">
           <div class="project-thumb">
             {project.frontmatter.image
-              ? <img src={project.frontmatter.image} alt={project.frontmatter.title} />
+              ? <img src={`${base}${project.frontmatter.image}`} alt={project.frontmatter.title} />
               : <div class="project-thumb-placeholder" />
             }
           </div>
           <div class="project-body">
             <div class="project-title-row">
-              <h3><a href={`/projects/${project.frontmatter.slug}`}>{project.frontmatter.title}</a></h3>
+              <h3><a href={`${base}/projects/${project.frontmatter.slug}`}>{project.frontmatter.title}</a></h3>
               <span class={`tag tag--status tag--${project.frontmatter.status}`}>{project.frontmatter.status}</span>
             </div>
             <p class="project-desc">{project.frontmatter.shortDescription}</p>
@@ -36,11 +37,11 @@ function getMember(name) {
                     <li class="member-item">
                       {m?.website
                         ? <a href={m.website} target="_blank" rel="noopener" class="member-link">
-                            <img src={m?.image || '/images/team/default.svg'} alt={name} class="member-avatar" />
+                            <img src={`${base}${m?.image || '/images/team/default.svg'}`} alt={name} class="member-avatar" />
                             <span>{name}</span>
                           </a>
                         : <>
-                            <img src={m?.image || '/images/team/default.svg'} alt={name} class="member-avatar" />
+                            <img src={`${base}${m?.image || '/images/team/default.svg'}`} alt={name} class="member-avatar" />
                             <span class="member-nolink">{name}</span>
                           </>
                       }

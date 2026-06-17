@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import members from '../../data/members.json';
+import { base } from '../../utils/url';
 
 export async function getStaticPaths() {
   const allProjects = await Astro.glob('../../content/projects/*.md');
@@ -24,7 +25,7 @@ const involvedMembers = memberNames
 <Layout title={title} description={shortDescription}>
 
   <!-- Back link -->
-  <p class="back-link"><a href="/research">← All Research</a></p>
+  <p class="back-link"><a href={`${base}/research`}>← All Research</a></p>
 
   <!-- Project header -->
   <section class="project-header section">
@@ -36,11 +37,11 @@ const involvedMembers = memberNames
           <li class="team-member">
             {m.website
               ? <a href={m.website} target="_blank" rel="noopener" class="tm-link">
-                  <img src={m.image || '/images/team/default.svg'} alt={m.name} class="avatar-xs" />
+                  <img src={`${base}${m.image || '/images/team/default.svg'}`} alt={m.name} class="avatar-xs" />
                   <span class="tm-name">{m.name}</span>
                 </a>
               : <>
-                  <img src={m.image || '/images/team/default.svg'} alt={m.name} class="avatar-xs" />
+                  <img src={`${base}${m.image || '/images/team/default.svg'}`} alt={m.name} class="avatar-xs" />
                   <span class="tm-name no-link">{m.name}</span>
                 </>
             }

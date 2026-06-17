@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import news from '../data/news.json';
 import members from '../data/members.json';
+import { base } from '../utils/url';
 
 const NEWS_PREVIEW = 8;
 
@@ -22,7 +23,7 @@ function initials(name) {
   <section class="hero">
     <h1 class="sr-only">LC³ Lab</h1>
     <img
-      src="/images/lc3_lab_logo_final_v5.png"
+      src={`${base}/images/lc3_lab_logo_final_v5.png`}
       alt="LC³ Lab — Learning aCross Boundaries, Learning through Collaboration, Learning as Creation"
       class="logo"
     />
@@ -70,7 +71,7 @@ function initials(name) {
       <span class="keyword">Research-Practice Partnership</span>
       <span class="keyword">Learning Analytics</span>
     </div>
-    <a href="/research" class="research-link">Explore our research projects →</a>
+    <a href={`${base}/research`} class="research-link">Explore our research projects →</a>
   </section>
 
   <!-- ── News ── -->
@@ -110,7 +111,7 @@ function initials(name) {
       {members.map(m => (
         <div class="person-card">
           <a href={m.website || (m.email ? `mailto:${m.email}` : undefined)} target="_blank" rel="noopener" class={`person-photo-link${!m.website && !m.email ? ' no-link' : ''}`}>
-            <img src={m.image || '/images/team/default.svg'} alt={m.name} class="person-photo" />
+            <img src={`${base}${m.image || '/images/team/default.svg'}`} alt={m.name} class="person-photo" />
           </a>
           <div class="person-info">
             {m.website

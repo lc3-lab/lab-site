@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import members from '../data/members.json';
+import { base } from '../utils/url';
 
 const director = members.find(m => m.name === 'Xinran Zhu');
 ---
@@ -12,7 +13,7 @@ const director = members.find(m => m.name === 'Xinran Zhu');
     <!-- Left: Director profile -->
     <aside class="director-card">
       <a href={director?.website} target="_blank" rel="noopener">
-        <img src={director?.image || '/images/team/default.svg'} alt={director?.name} class="director-photo" />
+        <img src={`${base}${director?.image || '/images/team/default.svg'}`} alt={director?.name} class="director-photo" />
       </a>
       <div class="director-info">
         <a href={director?.website} target="_blank" rel="noopener" class="director-name">{director?.name}</a>
