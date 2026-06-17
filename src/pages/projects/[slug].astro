@@ -1,0 +1,197 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import members from '../../data/members.json';
+
+export async function getStaticPaths() {
+  const allProjects = await Astro.glob('../../content/projects/*.md');
+  return allProjects.map(project => ({
+    params: { slug: project.frontmatter.slug },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { Content } = project;
+const { title, shortDescription, area, members: memberNames, status } = project.frontmatter;
+const areas = Array.isArray(area) ? area : [area];
+
+// Match member names to full member profiles
+const involvedMembers = memberNames
+  .map(name => members.find(m => m.name === name))
+  .filter(Boolean);
+---
+
+<Layout title={title} description={shortDescription}>
+
+  <!-- Back link -->
+  <p class="back-link"><a href="/research">← All Research</a></p>
+
+  <!-- Project header -->
+  <section class="project-header section">
+    <h1>{title}</h1>
+
+    {involvedMembers.length > 0 && (
+      <ul class="team-list">
+        {involvedMembers.map(m => (
+          <li class="team-member">
+            {m.website
+              ? <a href={m.website} target="_blank" rel="noopener" class="tm-link">
+                  <img src={m.image || '/images/team/default.svg'} alt={m.name} class="avatar-xs" />
+                  <span class="tm-name">{m.name}</span>
+                </a>
+              : <>
+                  <img src={m.image || '/images/team/default.svg'} alt={m.name} class="avatar-xs" />
+                  <span class="tm-name no-link">{m.name}</span>
+                </>
+            }
+          </li>
+        ))}
+      </ul>
+    )}
+
+    <div class="project-tags">
+      <span class="tag">{status}</span>
+      {areas.map(a => <span class="tag">{a}</span>)}
+    </div>
+  </section>
+
+  <!-- Markdown content -->
+  <section class="section prose-content">
+    <Content />
+  </section>
+
+</Layout>
+
+<style>
+  .back-link {
+    margin-bottom: 1.5rem;
+    font-size: 0.875rem;
+  }
+
+  .back-link a {
+    color: var(--text-secondary);
+    text-decoration: none;
+  }
+
+  .back-link a:hover {
+    color: var(--accent);
+  }
+
+  /* Header */
+  .project-header {
+    padding-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .project-header h1 {
+    font-size: 1.75rem;
+    line-height: 1.2;
+  }
+
+  /* Team */
+  .team-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 1.25rem;
+  }
+
+  .team-member {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+  }
+
+  .tm-link {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    text-decoration: none;
+  }
+
+  .tm-link:hover .tm-name {
+    text-decoration: underline;
+  }
+
+  .avatar-xs {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    background: #f3f4f6;
+  }
+
+  .tm-name {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  .tm-name.no-link {
+    color: var(--text-secondary);
+  }
+
+  /* Tags */
+  .project-tags {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+  }
+
+  /* Markdown prose */
+  .prose-content :global(h2) {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 1.75rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  .prose-content :global(h3) {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 1.25rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .prose-content :global(p) {
+    font-size: 0.925rem;
+    line-height: 1.55;
+    margin-bottom: 0.6rem;
+    color: var(--text);
+  }
+
+  .prose-content :global(ul),
+  .prose-content :global(ol) {
+    padding-left: 1.5rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .prose-content :global(li) {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--text);
+    margin-top: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .prose-content :global(a) {
+    color: var(--accent);
+  }
+
+  .prose-content :global(strong) {
+    font-weight: 600;
+  }
+
+  .prose-content :global(img) {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 6px;
+    margin: 0.75rem auto;
+  }
+</style>

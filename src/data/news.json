@@ -1,0 +1,70 @@
+[
+  
+  {
+    "date": "2026-06-01",
+    "tag": "talk",
+    "text": "Lab director <strong>Xinran Zhu</strong> delivered a keynote titled “Leadership in the Age of AI: Designing for the Future of Work and Learning” at the 2026 Illinois Community College Leadership Institute.",
+    "url": ""
+  },
+
+  {
+    "date": "2026-05-01",
+    "tag": "conference",
+    "text": "PhD student <strong>Bo Shui</strong> presented an interactive poster at the Future of Learning Technologies Showcase hosted by the Center for Research in Innovation in Technology-Enhanced Learning (ITEL) at UIUC. The poster showcased the design of SAIL, an AI-augmented tool that supports knowledge synthesis in CSCL settings.",
+    "url": "https://synthesisai-lab.github.io/"
+  },
+  {
+    "date": "2026-04-01",
+    "tag": "award",
+    "text": "PhD student <strong>Miaomiao Wei</strong>  received the 2026 Jeffrey S. Tanaka Research Grant and the Robert P. Larsen Grant in support of her research on AI in education. 🎉",
+    "url": ""
+  },
+
+  {
+    "date": "2026-02-01",
+    "tag": "publication",
+    "text": "We are excited to announce the Alpha release of Synthesis AI Lab (SAIL)!",
+    "url": "https://synthesisai-lab.github.io/"
+  },
+  {
+    "date": "2025-01-01",
+    "tag": "publication",
+    "text": "Lab director <strong> Xinran Zhu</strong> , together with Bodong Chen and David DeLiema, published “Advancing Collaborative Discourse through Knowledge Synthesis” in the International Journal of Computer-Supported Collaborative Learning.",
+    "url": "https://link.springer.com/article/10.1007/s11412-025-09463-6"
+  },
+  {
+    "date": "2025-09-01",
+    "tag": "talk",
+    "text": "Lab director <strong> Xinran Zhu</strong>  gave a talk, “Toward Critical and Reflective Engagement with AI,” as part of the GenAI Dialogues series at UIUC.",
+    "url": ""
+  },
+  {
+    "date": "2025-06-01",
+    "tag": "conference",
+    "text": "Lab director <strong>Xinran Zhu</strong> presented at ISLS 2025 (Helsinki): a paper on <a href=\"https://repository.isls.org/handle/1/11856\" target=\"_blank\" rel=\"noopener\">knowledge synthesis in collaborative discourse</a> and a <a href=\"https://repository.isls.org/handle/1/11897\" target=\"_blank\" rel=\"noopener\">symposium on bridging computational discourse analysis with practical implementation</a>."
+  },
+  {
+    "date": "2024-12-01",
+    "tag": "talk",
+    "text": "Lab director <strong> Xinran Zhu</strong> served as a panelist at the “Forum on the Future of AI in Education” at UIUC.",
+    "url":"https://emails.illinois.edu/newsletter/38/1119149038.html"
+  },
+  {
+    "date": "2024-06-01",
+    "tag": "conference",
+    "text": "Lab director <strong> Xinran Zhu</strong> presented a symposium on social annotation practice at ISLS 2024 (Buffalo).",
+    "url": "https://social-annotation-ed.pubpub.org/isls24-symposium"
+  },
+  {
+    "date": "2023-10-01",
+    "tag": "conference",
+    "text": "Lab director <strong> Xinran Zhu</strong>  presented at CSCW 2023 in Minneapolis.",
+     "url":"https://dl.acm.org/doi/abs/10.1145/3584931.3606996"
+  },
+  {
+    "date": "2023-06-01",
+    "tag": "conference",
+    "text": "Lab director <strong> Xinran Zhu</strong>  presented at ISLS 2023 (Montreal): the Joint Attention-Interaction-Creation (AIC) Framework for understanding idea creation in collaborative discourse.",
+    "url": "https://arxiv.org/abs/2305.16262"
+  }
+]

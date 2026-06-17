@@ -1,0 +1,396 @@
+---
+import Layout from '../layouts/Layout.astro';
+import news from '../data/news.json';
+import members from '../data/members.json';
+
+const NEWS_PREVIEW = 8;
+
+function formatDate(dateStr) {
+  const [year, month] = dateStr.split('-');
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  return `${months[parseInt(month) - 1]} ${year}`;
+}
+
+function initials(name) {
+  return name.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase();
+}
+---
+
+<Layout title="Home">
+
+  <!-- ── Hero ── -->
+  <section class="hero">
+    <h1 class="sr-only">LC³ Lab</h1>
+    <img
+      src="/images/lc3_lab_logo_final_v5.png"
+      alt="LC³ Lab — Learning aCross Boundaries, Learning through Collaboration, Learning as Creation"
+      class="logo"
+    />
+
+    <p class="description">
+      <strong>LC³ Lab</strong>, pronounced “LC Cubed” or “LC Three,” is a research lab at the
+      <strong>University of Illinois Urbana-Champaign</strong>. We work at the intersection of learning sciences, human-computer interaction, and AI in education.Our work is grounded in three core ideas. 
+    </p>
+
+    <ul class="areas">
+      <li>
+        <span class="area-label">Learning across boundaries</span>
+        — Learning expands the boundaries of knowledge across disciplines, perspectives,
+        and ways of knowing.
+      </li>
+      <li>
+        <span class="area-label">Learning through Collaboration</span>
+        — Learning is fundamentally social and is deepened through collaboration with
+        peers, technologies, and artifacts.
+      </li>
+      <li>
+        <span class="area-label">Learning as Creation</span>
+        — Learning is a process of collaborative knowledge creation. Learners actively propose ideas, iteratively advance thinking, synthesize understanding, and create knowledge together rather than passively receive information.
+      </li>
+    </ul>
+
+    <p class="methodology">
+      Grounded in these ideas, we <strong>design, build, and study technology-supported learning
+      environments </strong>. Our work combines technological and pedagogical innovation to 
+      support meaningful learning in authentic educational settings. We draw on AI techniques and insights from learning analytics 
+      to create systems that augment human thinking, foster collaboration, support disciplinary learning, and make knowledge creation 
+      visible and productive. 
+    </p>
+
+    <p class="methodology">
+      Through design research, our current research investigates the role of AI in human thinking and knowledge creation. 
+      We particularly focus on how AI shapes interaction and supports key epistemic practices in collaborative learning, 
+      and how learning environments should be designed for meaningful human-AI collaboration. 
+      These questions also lead us to ask what new forms of literacy, participation, and agency are needed for the future of work and learning.
+    </p>
+
+    <div class="keywords">
+      <span class="keyword">AIED</span>
+      <span class="keyword">Computer-Supported Collaborative Learning</span>
+      <span class="keyword">Research-Practice Partnership</span>
+      <span class="keyword">Learning Analytics</span>
+    </div>
+    <a href="/research" class="research-link">Explore our research projects →</a>
+  </section>
+
+  <!-- ── News ── -->
+  <section class="section" id="news">
+    <p class="section-label">Recent News</p>
+    <ul class="news-list">
+      {news.map((item, i) => (
+        <li class={`news-item${i >= NEWS_PREVIEW ? ' news-extra' : ''}`}>
+          <time class="news-date">{formatDate(item.date)}</time>
+          <span class={`news-tag news-tag--${item.tag}`}>{item.tag}</span>
+          <span class="news-text">
+            <span set:html={item.text} />{item.url && <> <a href={item.url} target="_blank" rel="noopener" class="news-link">↗</a></>}
+          </span>
+        </li>
+      ))}
+    </ul>
+    {news.length > NEWS_PREVIEW && (
+      <button class="show-more-btn" id="show-more-btn">Show more</button>
+    )}
+  </section>
+
+  <script>
+    const btn = document.getElementById('show-more-btn');
+    const extras = document.querySelectorAll('.news-extra');
+    let open = false;
+    btn?.addEventListener('click', () => {
+      open = !open;
+      extras.forEach(el => (el as HTMLElement).style.display = open ? 'grid' : 'none');
+      if (btn) btn.textContent = open ? 'Show less' : 'Show more';
+    });
+  </script>
+
+  <!-- ── People ── -->
+  <section class="section" id="people">
+    <p class="section-label">People</p>
+    <div class="people-grid">
+      {members.map(m => (
+        <div class="person-card">
+          <a href={m.website || (m.email ? `mailto:${m.email}` : undefined)} target="_blank" rel="noopener" class={`person-photo-link${!m.website && !m.email ? ' no-link' : ''}`}>
+            <img src={m.image || '/images/team/default.svg'} alt={m.name} class="person-photo" />
+          </a>
+          <div class="person-info">
+            {m.website
+              ? <a href={m.website} target="_blank" rel="noopener" class="person-name">{m.name}</a>
+              : <p class="person-name">{m.name}</p>
+            }
+            <p class="person-title">{m.title}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  /* ── Hero ── */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+
+  .hero {
+    padding-bottom: 3rem;
+    margin-bottom: 3rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .logo {
+    display: block;
+    width: 100%;
+    max-width: 640px;
+    height: auto;
+    align-self: flex-start;
+  }
+
+  .description {
+    font-size: 0.975rem;
+  }
+
+  /* Research area inline list */
+  .areas {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    padding-left: 0;
+  }
+
+  .areas li {
+    font-size: 0.950rem;
+    line-height: 1.35;
+    color: var(--text-secondary);
+    padding-left: 1rem;
+    border-left: 2px solid var(--border);
+  }
+
+  .area-label {
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .methodology {
+    font-size: 0.975rem;
+  }
+
+  .keywords {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .keyword {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: #374151;
+    background: #f5f3ff;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    padding: 0.25rem 0.75rem;
+  }
+
+  .research-link {
+    display: inline-block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.15s;
+    align-self: flex-start;
+  }
+
+  .research-link:hover {
+    border-color: var(--accent);
+    text-decoration: none;
+  }
+
+  /* ── News ── */
+  .news-list {
+    list-style: none;
+  }
+
+  .news-item {
+    display: grid;
+    grid-template-columns: 62px 72px 1fr;
+    align-items: center;
+    gap: 0 0.35rem;
+    padding: 0.55rem 0;
+  }
+
+
+  .news-extra {
+    display: none;
+  }
+
+  .news-date {
+    font-size: 0.775rem;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .news-tag {
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0.15rem 0.45rem;
+    border-radius: 999px;
+    background: #f3f4f6;
+    color: #4b5563;
+    white-space: nowrap;
+    align-self: center;
+    justify-self: start;
+  }
+
+  .news-tag--paper       { background: #ede9fe; color: #7c3aed; }
+  .news-tag--conference  { background: #dcfce7; color: #15803d; }
+  .news-tag--award       { background: #fef3c7; color: #b45309; }
+  .news-tag--media       { background: #ede9fe; color: #7c3aed; }
+  .news-tag--talk        { background: #cffafe; color: #0e7490; }
+  .news-tag--publication { background: #fce7f3; color: #be185d; }
+
+  .news-text {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--text);
+    padding-left: 1.875rem;
+  }
+
+  .news-link {
+    font-size: 0.8rem;
+    color: var(--accent);
+    text-decoration: none;
+    margin-left: 0.2rem;
+  }
+
+  .news-link:hover {
+    text-decoration: none;
+    opacity: 0.75;
+  }
+
+  .show-more-btn {
+    margin-top: 1.25rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.825rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.45rem 1rem;
+    cursor: pointer;
+    transition: color 0.15s, border-color 0.15s;
+  }
+
+  .show-more-btn:hover {
+    color: var(--text);
+    border-color: #9ca3af;
+  }
+
+  /* ── People ── */
+  .people-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 1.75rem 1.25rem;
+  }
+
+  .person-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.55rem;
+  }
+
+  .person-photo-link {
+    display: block;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+
+  .person-photo-link.no-link {
+    cursor: default;
+    pointer-events: none;
+  }
+
+  .person-photo {
+    width: 88px;
+    height: 88px;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+    background: #f3f4f6;
+    transition: opacity 0.15s;
+  }
+
+  .person-photo-link:hover .person-photo {
+    opacity: 0.85;
+  }
+
+  .person-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    width: 100%;
+  }
+
+  .person-name {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--accent);
+    text-decoration: none;
+    line-height: 1.3;
+  }
+
+  a.person-name:hover {
+    text-decoration: underline;
+  }
+
+  p.person-name {
+    color: var(--text);
+  }
+
+  .person-title {
+    font-size: 0.72rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+  }
+
+  .person-website {
+    font-size: 0.68rem;
+    color: var(--accent);
+    text-decoration: none;
+    opacity: 0.75;
+    margin-top: 0.15rem;
+  }
+
+  .person-website:hover {
+    opacity: 1;
+    text-decoration: underline;
+  }
+
+  /* ── Spacing ── */
+  .section {
+    margin-bottom: 3.5rem;
+  }
+
+  @media (max-width: 560px) {
+    .people-grid { grid-template-columns: repeat(3, 1fr); }
+    .news-item { grid-template-columns: 58px 60px 1fr; }
+  }
+</style>

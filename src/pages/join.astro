@@ -1,0 +1,198 @@
+---
+import Layout from '../layouts/Layout.astro';
+import members from '../data/members.json';
+
+const director = members.find(m => m.name === 'Xinran Zhu');
+---
+
+<Layout title="Join Us" description="Prospective students, interns, and collaborators — join the LC³ Lab at UIUC.">
+
+  <div class="join-layout">
+
+    <!-- Left: Director profile -->
+    <aside class="director-card">
+      <a href={director?.website} target="_blank" rel="noopener">
+        <img src={director?.image || '/images/team/default.svg'} alt={director?.name} class="director-photo" />
+      </a>
+      <div class="director-info">
+        <a href={director?.website} target="_blank" rel="noopener" class="director-name">{director?.name}</a>
+        <p class="director-title">Lab Director</p>
+        <p class="director-dept">Assistant Professor</p>
+        <p class="director-dept">College of Education</p>
+        <p class="director-uni">University of Illinois Urbana-Champaign</p>
+        <a href="mailto:xrzhu@illinois.edu" class="director-email">xrzhu@illinois.edu</a>
+      </div>
+    </aside>
+
+    <!-- Right: Content -->
+    <div class="join-content">
+
+      <section class="section">
+        <h1>Join us</h1>
+        <p class="intro">
+          We welcome <strong>students</strong> who are interested in our work to become part of our lab, 
+          as well as <strong>collaborators and practitioners</strong> who want to join us in designing something meaningful together. 
+          We're excited to build better learning experiences with people who share our curiosity about human learning, 
+          collaboration, and the evolving role of AI in education.
+        </p>
+      </section>
+
+      <section class="section">
+        <p class="section-label">Prospective PhD Students</p>
+        <div class="card">
+          <p>
+            I'm recruiting PhD students this year through the <a href="https://education.illinois.edu/epol/programs-degrees/ldl" target="_blank" rel="noopener">Learning Design and Leadership</a> (LDL) concentration in the Department of Education Policy, Organization and Leadership at UIUC. 
+            If you are interested, please send an email with your CV and a brief reserach statement.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <p class="section-label">Online EdD Students</p>
+        <div class="card">
+          <p>
+            We also welcome online EdD students through the <a href="https://education.illinois.edu/epol/programs-degrees/ldl/edd" target="_blank" rel="noopener">LDL EdD program</a> who are interested in connecting their professional practice with research. 
+            This may be a good fit if you are interested in collaborating on research projects with us while developing your own applied inquiry around learning design, AI in education, collaborative learning, or learning analytics.
+            If you are interested, please send an email with your CV and a brief reserach statement.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <p class="section-label">Research Interns</p>
+        <div class="card">
+          <p>
+          LC³ Lab also works with research interns and student collaborators. 
+          Depending on current projects, interns may contribute to literature reviews, data analysis, design and development work, classroom research, and research dissemination.
+          If you are interested, please email your CV, research interests, and relevant skills.
+          </p>
+        </div>
+      </section>
+
+
+    </div>
+  </div>
+
+</Layout>
+
+<style>
+  .join-layout {
+    display: flex;
+    gap: 3.5rem;
+    align-items: flex-start;
+  }
+
+  /* ── Left: director card ── */
+  .director-card {
+    flex-shrink: 0;
+    width: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.75rem;
+    position: sticky;
+    top: 72px;
+  }
+
+  .director-photo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    background: #f3f4f6;
+    transition: opacity 0.15s;
+  }
+
+  .director-photo:hover {
+    opacity: 0.85;
+  }
+
+  .director-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    width: 100%;
+  }
+
+  .director-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .director-name:hover {
+    color: var(--accent);
+  }
+
+  .director-title {
+    font-size: 0.75rem;
+    color: var(--text);
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  .director-dept,
+  .director-uni {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+  }
+
+  .director-email {
+    font-size: 0.75rem;
+    color: var(--accent);
+    text-decoration: none;
+    margin-top: 0.2rem;
+    word-break: break-all;
+  }
+
+  .director-email:hover {
+    text-decoration: underline;
+  }
+
+  /* ── Right: content ── */
+  .join-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  h1 { margin-bottom: 1rem; }
+
+  .intro {
+    font-size: 1rem;
+    color: var(--text-secondary);
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .card p {
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+
+  .card ul {
+    padding-left: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .card ul li {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 640px) {
+    .join-layout { flex-direction: column; }
+    .director-card { width: 100%; flex-direction: row; text-align: left; position: static; }
+    .director-photo { width: 80px; height: 80px; flex-shrink: 0; }
+  }
+</style>

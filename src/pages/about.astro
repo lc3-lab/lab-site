@@ -1,0 +1,238 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="PI" description="About Xinran Zhu — Principal Investigator of the LC³ Lab at UIUC.">
+
+  <!-- Header -->
+  <section class="section pi-header">
+    <div class="pi-photo-wrap">
+      <!-- Replace src with your photo path, e.g. /images/xinran-zhu.jpg -->
+      <div class="photo-placeholder">XZ</div>
+    </div>
+    <div class="pi-contact">
+      <h1>Xinran Zhu</h1>
+      <p class="title">Assistant Professor</p>
+      <p class="affil">Department of Curriculum &amp; Instruction<br />University of Illinois Urbana-Champaign</p>
+      <div class="contact-links">
+        <a href="mailto:xrzhu@illinois.edu">xrzhu@illinois.edu</a>
+        <a href="https://zhu-xinran.com" target="_blank" rel="noopener">Personal Site</a>
+        <!-- Add Google Scholar, Twitter/X, etc. below -->
+        <!-- <a href="https://scholar.google.com/..." target="_blank" rel="noopener">Google Scholar</a> -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Background / Bio -->
+  <section class="section">
+    <p class="section-label">Background</p>
+    <div class="prose">
+      <p>
+        Dr. Xinran Zhu is an Assistant Professor in the Department of Curriculum &amp; Instruction
+        at the University of Illinois Urbana-Champaign. Her research sits at the intersection of
+        learning sciences, learning analytics, and educational technologies.
+      </p>
+      <p>
+        Drawing on methods from media design, software engineering, and data science, she designs
+        pedagogical approaches and technologies that support meaningful learning in authentic
+        classroom settings.
+      </p>
+      <!-- Add additional background, education history, prior positions, etc. here -->
+      <p>[Add additional bio content here — education, prior positions, awards, etc.]</p>
+    </div>
+  </section>
+
+  <!-- Research Agenda -->
+  <section class="section">
+    <p class="section-label">Research Agenda</p>
+    <div class="prose">
+      <p>
+        My research is organized around three interconnected areas:
+      </p>
+      <div class="agenda-item">
+        <h3>Design and Implementation of Educational Technologies</h3>
+        <p>
+          I study how emerging tools—such as web-based annotation platforms—support students'
+          knowledge building in computer-supported collaborative learning (CSCL) environments.
+          This work involves close collaboration with instructors to design activities grounded
+          in authentic classroom contexts.
+        </p>
+      </div>
+      <div class="agenda-item">
+        <h3>AI in Education</h3>
+        <p>
+          I design AI applications to support students' knowledge building and disciplinary
+          skills, and explore how AI can augment human learning and collaboration. This includes
+          studying both the technical design of AI tools and the pedagogical conditions under
+          which they are most effective.
+        </p>
+      </div>
+      <div class="agenda-item">
+        <h3>Computational Research and Learning Analytics</h3>
+        <p>
+          I develop analytical frameworks and models to depict learning engagement and
+          collaboration patterns, using techniques like network analysis and natural language
+          processing. The goal is to create actionable insights to support meaningful
+          educational practice.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Teaching -->
+  <section class="section">
+    <p class="section-label">Teaching</p>
+    <div class="prose">
+      <p>[Add your courses here. Example format below.]</p>
+      <div class="course-list">
+        <div class="course">
+          <span class="course-code">CI XXX</span>
+          <span class="course-name">Course Title Here</span>
+          <span class="course-term">Fall 2025, Spring 2026</span>
+        </div>
+        <!-- Duplicate the above block for each course -->
+      </div>
+    </div>
+  </section>
+
+  <!-- CV link -->
+  <section class="section">
+    <p class="section-label">CV</p>
+    <p>
+      <!-- Uncomment and update the path once you add your CV to /public/cv.pdf -->
+      <!-- <a href="/cv.pdf" target="_blank" rel="noopener">Download CV (PDF)</a> -->
+      [Add a link to your CV here.]
+    </p>
+  </section>
+
+</Layout>
+
+<style>
+  /* PI header block */
+  .pi-header {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 2.5rem;
+  }
+
+  .photo-placeholder {
+    width: 120px;
+    height: 120px;
+    border-radius: 6px;
+    background: #dbeafe;
+    color: #1d4ed8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .pi-photo-wrap img {
+    width: 120px;
+    height: 120px;
+    border-radius: 6px;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  .pi-contact h1 {
+    margin-bottom: 0.25rem;
+  }
+
+  .title {
+    font-size: 0.925rem;
+    color: var(--text-secondary);
+  }
+
+  .affil {
+    font-size: 0.825rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    margin-top: 0.25rem;
+    line-height: 1.5;
+  }
+
+  .contact-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .contact-links a {
+    font-size: 0.85rem;
+    color: var(--accent);
+  }
+
+  /* Prose content */
+  .prose {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    max-width: 680px;
+  }
+
+  .prose p {
+    font-size: 0.925rem;
+    line-height: 1.75;
+  }
+
+  /* Research agenda items */
+  .agenda-item {
+    padding: 1rem 1.25rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--bg-subtle);
+  }
+
+  .agenda-item h3 {
+    font-size: 0.9rem;
+    margin-bottom: 0.4rem;
+    color: var(--text);
+  }
+
+  .agenda-item p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+  }
+
+  /* Teaching */
+  .course-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .course {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.875rem;
+    align-items: baseline;
+    flex-wrap: wrap;
+  }
+
+  .course-code {
+    font-weight: 600;
+    color: var(--text);
+    min-width: 70px;
+  }
+
+  .course-name {
+    color: var(--text);
+  }
+
+  .course-term {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 560px) {
+    .pi-header { flex-direction: column; }
+  }
+</style>
