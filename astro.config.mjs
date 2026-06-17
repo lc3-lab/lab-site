@@ -6,12 +6,19 @@ const siteBase = '/lab-site';
 
 function rehypeBaseAssets() {
   return (tree) => {
-    visit(tree, 'element', (node) => {
-      if (node.tagName === 'img' && node.properties?.src?.startsWith('/')) {
-        node.properties.src = siteBase + node.properties.src;
+    visit(tree, (node) => {
+      if (node.type === 'element') {
+        if (node.tagName === 'img' && node.properties?.src?.startsWith('/')) {
+          node.properties.src = siteBase + node.properties.src;
+        }
+        if (node.tagName === 'a' && node.properties?.href?.startsWith('/')) {
+          node.properties.href = siteBase + node.properties.href;
+        }
       }
-      if (node.tagName === 'a' && node.properties?.href?.startsWith('/')) {
-        node.properties.href = siteBase + node.properties.href;
+      if (node.type === 'raw' && typeof node.value === 'string') {
+        node.value = node.value
+          .replace(/src="(\/[^"]+)"/g, `src="${siteBase}$1"`)
+          .replace(/href="(\/[^"]+)"/g, `href="${siteBase}$1"`);
       }
     });
   };
