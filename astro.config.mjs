@@ -4,11 +4,14 @@ import { visit } from 'unist-util-visit';
 
 const siteBase = '/lab-site';
 
-function rehypeBaseImages() {
+function rehypeBaseAssets() {
   return (tree) => {
     visit(tree, 'element', (node) => {
       if (node.tagName === 'img' && node.properties?.src?.startsWith('/')) {
         node.properties.src = siteBase + node.properties.src;
+      }
+      if (node.tagName === 'a' && node.properties?.href?.startsWith('/')) {
+        node.properties.href = siteBase + node.properties.href;
       }
     });
   };
@@ -20,7 +23,7 @@ export default defineConfig({
   output: 'static',
   markdown: {
     rehypePlugins: [
-      rehypeBaseImages,
+      rehypeBaseAssets,
       [rehypeExternalLinks, { target: '_blank', rel: ['noopener', 'noreferrer'] }],
     ],
   },
