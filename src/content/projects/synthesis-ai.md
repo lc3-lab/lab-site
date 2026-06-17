@@ -50,7 +50,7 @@ These components help students organize ideas, notice patterns and gaps, reflect
 
 ## Publications
 
-- [design] Zhu, X., Shui, B., Asnani, I., & Magee, L. (2026). [Designing an AI-augmented knowledge synthesis tool for collaborative learning](/docs/sail-cscl2026.pdf). In Proceedings of the 19th International Conference on Computer-Supported Collaborative Learning – CSCL 2026. International Society of the Learning Sciences.
+- [design] Zhu, X., Shui, B., Asnani, I., & Magee, L. (2026). [Designing an AI-augmented knowledge synthesis tool for collaborative learning](/docs/sail-cscl2026.pdf). In Proceedings of the 19th International Conference on Computer-Supported Collaborative Learning – CSCL 2026. International Society of the Learning Sciences. — [Slides](/docs/isls26-SAIL-slides.pdf)
 - [technical] Shui, B. & Zhu, X. (2026). [Knowledge synthesis graph: An LLM-based approach for modeling student collaborative discourse](https://arxiv.org/abs/2602.06194). arXiv.
 - [empirical] Zhu, X., Chen, B., & DeLiema, D. (2026). [Advancing collaborative discourse through knowledge synthesis](https://link.springer.com/article/10.1007/s11412-025-09463-6). International Journal of Computer-Supported Collaborative Learning, 1-31.
 - [empirical] Zhu, X. & Chen, B. (2025). The Evolution of Shared Artifacts in CSCL: A Knowledge Synthesis Intervention for Productive Collaborative Discourse. In Oshima, J., Chen, B., Vogel, F., & Järvelä, J. (Eds.), Proceedings of the 18th International Conference on Computer-Supported Collaborative Learning - CSCL 2025 (pp. 286-290). International Society of the Learning Sciences.
